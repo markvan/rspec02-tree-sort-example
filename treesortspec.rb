@@ -39,8 +39,24 @@ end
 
 describe Node do
   it "one int sort" do
-  node=Node.new (2)
+    node=Node.new (2)
     node.sort.should ==[2]
+  end
+end
+
+describe Node do
+  it "two int sort" do
+    node=Node.new (2)
+    node.add(-200)
+    node.sort.should == [-200, 2]
+
+    node=Node.new (2)
+    node.add(2)
+    node.sort.should == [2, 2]
+
+    node=Node.new (2)
+    node.add(200)
+    node.sort.should == [2, 200]
   end
 end
 

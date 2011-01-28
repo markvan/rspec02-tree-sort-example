@@ -15,18 +15,26 @@ class Node
         @left.add(i)
       else
         @left = Node.new(i)
-        end
-    elsif
-       if @left.is_a? Node
-        @right.add(i)
-      else
-        @right = Node.new(i)
       end
+    elsif if @left.is_a? Node
+            @right.add(i)
+          else
+            @right = Node.new(i)
+          end
     end
   end
 
   def sort
-    [2]
+    if @left.is_a? Node
+      result = @left.sort
+    else
+      result = []
+    end
+    result.concat([@value])
+    if @right.is_a? Node
+      result.concat(@right.sort)
+    end
+    result 
   end
 
 end
