@@ -12,6 +12,6 @@ describe Tree do
   it "creates a first node sucessfully" do
     tree = Tree.new
     tree.add(3);
-    tree.sorted.should == [3]
+    tree.sorted.should == 3
   end
 end
