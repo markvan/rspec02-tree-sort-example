@@ -2,10 +2,14 @@
 require_relative 'treesort'
 
 describe Node do
-  it "deals with one integer" do
-    node=Node.new (2) # want to disallow this later
+  it "create with one integer" do
+    node=Node.new (2)
+
+    node.left.should == nil
     node.value.should == 2
-    node=Node.new (-2) # want to disallow this later
+    node.right.should == nil
+
+    node=Node.new (-2)
     node.value.should == -2
   end
 end
@@ -13,15 +17,8 @@ end
 
 describe Node do
   it "add a smaller number" do
-    node=Node.new (2) # want to disallow this later
-    node.left.should == nil
-    node.value.should == 2
-    node.right.should == nil
-
-    node.add(-6) # want to disallow this later
-    # node.left.should == nil
-    node.value.should == 2
-    node.right.should == nil
+    node=Node.new (2)
+    node.add(-6)
 
     node.left.left.should == nil
     node.left.value.should == -6
@@ -31,21 +28,22 @@ end
 
 describe Node do
   it "add a greater number" do
-    node=Node.new (2) # want to disallow this later
-    node.left.should == nil
-    node.value.should == 2
-    node.right.should == nil
-
-    node.add(100) # want to disallow this later
-    node.left.should == nil
-    node.value.should == 2
-    #node.right.should == nil
+    node=Node.new (2)
+    node.add(100)
 
     node.right.left.should == nil
     node.right.value.should == 100
     node.right.right.should == nil
   end
 end
+
+describe Node do
+  it "one int sort" do
+  node=Node.new (2)
+    node.sort.should ==[2]
+  end
+end
+
 
 
 
