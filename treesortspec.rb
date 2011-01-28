@@ -12,7 +12,7 @@ end
 
 
 describe Node do
-  it "addlesser values" do
+  it "add a smaller number" do
     node=Node.new (2) # want to disallow this later
     node.left.should == nil
     node.value.should == 2
@@ -26,6 +26,24 @@ describe Node do
     node.left.left.should == nil
     node.left.value.should == -6
     node.left.right.should == nil
+  end
+end
+
+describe Node do
+  it "add a greater number" do
+    node=Node.new (2) # want to disallow this later
+    node.left.should == nil
+    node.value.should == 2
+    node.right.should == nil
+
+    node.add(100) # want to disallow this later
+    node.left.should == nil
+    node.value.should == 2
+    #node.right.should == nil
+
+    node.right.left.should == nil
+    node.right.value.should == 100
+    node.right.right.should == nil
   end
 end
 

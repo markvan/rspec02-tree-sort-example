@@ -5,7 +5,6 @@ class Node
   attr_accessor :left, :value, :right
   @left, @right = nil, nil
 
-
   def initialize(i)
     @value = i
   end
@@ -16,6 +15,12 @@ class Node
         @left.add(i)
       else
         @left = Node.new(i)
+        end
+    elsif
+       if @left.is_a? Node
+        @right.add(i)
+      else
+        @right = Node.new(i)
       end
     end
   end
