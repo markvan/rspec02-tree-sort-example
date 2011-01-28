@@ -1,13 +1,23 @@
 # treesort.rb
 
-class Node
+  class Node
+
+  def initialize(i)
+    @value = [i]
+  end
+
+  def add(i)
+    @value=i
+  end
+
   def sorted
-    []
+    @value
   end
 end
+
 class Tree
 
-  def new
+  def initialize
     @value = nil
   end
 

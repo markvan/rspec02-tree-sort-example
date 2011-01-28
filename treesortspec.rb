@@ -3,8 +3,10 @@ require_relative 'treesort'
 
 describe Node do
   it "deals with one integer" do
-    node=Node.new
-    node.sorted.should == []
+    node=Node.new (2)    # want to disallow this later
+    node.sorted.should == [2]
+    node=Node.new (-2)    # want to disallow this later
+    node.sorted.should == [-2]
   end
 
 end
