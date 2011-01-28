@@ -3,13 +3,33 @@ require_relative 'treesort'
 
 describe Node do
   it "deals with one integer" do
-    node=Node.new (2)    # want to disallow this later
-    node.sorted.should == [2]
-    node=Node.new (-2)    # want to disallow this later
-    node.sorted.should == [-2]
+    node=Node.new (2) # want to disallow this later
+    node.value.should == 2
+    node=Node.new (-2) # want to disallow this later
+    node.value.should == -2
   end
-
 end
+
+
+describe Node do
+  it "addlesser values" do
+    node=Node.new (2) # want to disallow this later
+    node.left.should == nil
+    node.value.should == 2
+    node.right.should == nil
+
+    node.add(-6) # want to disallow this later
+    # node.left.should == nil
+    node.value.should == 2
+    node.right.should == nil
+
+    node.left.left.should == nil
+    node.left.value.should == -6
+    node.left.right.should == nil
+  end
+end
+
+
 
 describe Tree do
   it "sort returns nil when first created and no integers to sort" do
