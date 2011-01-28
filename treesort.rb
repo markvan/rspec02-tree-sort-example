@@ -1,5 +1,5 @@
 # treesort.rb
-class Node
+class Tree
 
   def sorted
     nil
