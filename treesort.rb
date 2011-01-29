@@ -16,7 +16,7 @@ class Node
       else
         @left = Node.new(i)
       end
-    elsif if @left.is_a? Node
+    elsif if @right.is_a? Node
             @right.add(i)
           else
             @right = Node.new(i)
@@ -34,7 +34,7 @@ class Node
     if @right.is_a? Node
       result.concat(@right.sort)
     end
-    result 
+    result
   end
 
 end

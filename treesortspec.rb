@@ -60,7 +60,21 @@ describe Node do
   end
 end
 
+describe Node do
+  it "three-plus int sort" do
+    node=Node.new (2)
+    node.add(-200)
+    node.add(-300)
+    node.sort.should == [-300, -200, 2]
 
+   
+    node.add(400)
+    node.sort.should == [-300, -200, 2, 400]
+
+    node.add(-16)
+    node.sort.should == [-300, -200, -16, 2, 400]
+  end
+end
 
 
 describe Tree do
