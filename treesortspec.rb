@@ -2,15 +2,19 @@
 require_relative 'treesort'
 
 describe Node do
-  it "create with one integer" do
-    node=Node.new (2)
 
+  def create_and_check_node(val)
+    node = Node.new(val)
     node.instance_variable_get(:@left).should == nil
-    node.instance_variable_get(:@value).should == 2
+    node.instance_variable_get(:@value).should == val
     node.instance_variable_get(:@right).should == nil
+    node
+  end
 
-    node=Node.new (-2)
-    node.instance_variable_get(:@value).should == -2
+  it "create with one integer" do
+    create_and_check_node (2)
+    create_and_check_node (-2)
+    create_and_check_node (66)
   end
 end
 
