@@ -2,11 +2,9 @@
 
 class Node
 
-  attr_accessor :left, :value, :right
-  @left, @right = nil, nil
-
   def initialize(i)
     @value = i
+    @left, @right = nil, nil
   end
 
   def add(i)

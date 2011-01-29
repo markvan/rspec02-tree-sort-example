@@ -20,9 +20,12 @@ describe Node do
     node=Node.new (2)
     node.add(-6)
 
-    node.instance_variable_get(:@left).instance_variable_get(:@left).should == nil
-    node.instance_variable_get(:@left).instance_variable_get(:@value).should == -6
-    node.instance_variable_get(:@left).instance_variable_get(:@right).should == nil
+    node_level_down_left = node.instance_variable_get(:@left)
+    node_level_down_left.class.should == Node
+
+    node_level_down_left.instance_variable_get(:@left).should == nil
+    node_level_down_left.instance_variable_get(:@value).should == -6
+    node_level_down_left.instance_variable_get(:@right).should == nil
   end
 end
 
@@ -31,9 +34,12 @@ describe Node do
     node=Node.new (2)
     node.add(100)
 
-    node.instance_variable_get(:@right).instance_variable_get(:@left).should == nil
-    node.instance_variable_get(:@right).instance_variable_get(:@value).should == 100
-    node.instance_variable_get(:@right).instance_variable_get(:@right).should == nil
+    node_level_down_right = node.instance_variable_get(:@right)
+    node_level_down_right.class.should == Node
+
+    node_level_down_right.instance_variable_get(:@left).should == nil
+    node_level_down_right.instance_variable_get(:@value).should == 100
+    node_level_down_right.instance_variable_get(:@right).should == nil
   end
 end
 
