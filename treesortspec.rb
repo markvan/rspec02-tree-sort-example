@@ -77,29 +77,31 @@ describe Node do
 end
 
 
-describe Tree do
-  it "sort returns nil when first created and no integers to sort" do
-    tree = Tree.new
-    tree.sorted.should == nil
+describe Sorter do
+  it "sort returns [] when first created and no integers to sort" do
+    s = Sorter.new
+    s.sort.should == []
   end
 end
 
-describe Tree do
+describe Sorter do
   it "sorts just one integer" do
-    tree = Tree.new
-    tree.add(3);
-    tree.sorted.should == 3
-    tree = Tree.new
-    tree.add(-2)
-    tree.sorted.should == -2
+    s = Sorter.new
+    s.add(2);
+    s.sort.should == [2]
   end
 end
 
-describe Tree do
-  it "sorts two integers" do
-    tree = Tree.new
-    tree.add(3);
-    tree.add(-2)
-    tree.sorted.should == [3, -2]
+describe Sorter do
+  it "sorts many integers" do
+    s = Sorter.new
+    s.add(3);
+    s.add(-2)
+    s.sort.should == [-2, 3]
+    s.add(-2)
+    s.add(0)
+    s.add(-1)
+    s.add(0)
+    s.sort.should == [-2,-2,-1,0,0,3]
   end
 end

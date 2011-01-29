@@ -39,17 +39,25 @@ class Node
 
 end
 
-class Tree
+class Sorter
 
   def initialize
-    @value = nil
+    @tree = nil
   end
 
   def add(i)
-    @value=i
+    if @tree == nil
+      @tree = Node.new(i)
+    else
+      @tree.add(i)
+    end
   end
 
-  def sorted
-    @value
+  def sort
+    if @tree == nil
+      []
+    else
+      @tree.sort
+    end
   end
 end
