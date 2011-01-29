@@ -16,26 +16,24 @@ describe Node do
     create_and_check_node (-2)
     create_and_check_node (66)
   end
-end
 
-
-describe Node do
-  it "add a smaller number" do
-    node=Node.new (2)
-    node.add(-6)
-
+  def check_left(node, val)
     node_level_down_left = node.instance_variable_get(:@left)
     node_level_down_left.class.should == Node
 
     node_level_down_left.instance_variable_get(:@left).should == nil
-    node_level_down_left.instance_variable_get(:@value).should == -6
+    node_level_down_left.instance_variable_get(:@value).should == val
     node_level_down_left.instance_variable_get(:@right).should == nil
   end
-end
 
-describe Node do
+  it "add a smaller number" do
+    node = create_and_check_node (2)
+    node.add(-6)
+    check_left(node, -6)
+  end
+
   it "add a greater number" do
-    node=Node.new (2)
+    node = create_and_check_node (2)
     node.add(100)
 
     node_level_down_right = node.instance_variable_get(:@right)
