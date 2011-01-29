@@ -9,16 +9,9 @@ class Node
 
   def add(i)
     if i < @value
-      if @left.is_a? Node
-        @left.add(i)
-      else
-        @left = Node.new(i)
-      end
-    elsif if @right.is_a? Node
-            @right.add(i)
-          else
-            @right = Node.new(i)
-          end
+      @left.is_a?(Node) ? @left.add(i) : @left = Node.new(i)
+    elsif
+      @right.is_a?(Node) ? @right.add(i) : @right = Node.new(i)
     end
   end
 

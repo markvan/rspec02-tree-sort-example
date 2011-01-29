@@ -58,9 +58,7 @@ describe Node do
     node=Node.new (2)
     node.sort.should ==[2]
   end
-end
 
-describe Node do
   it "two int sort" do
     node=Node.new (2)
     node.add(-200)
@@ -74,9 +72,7 @@ describe Node do
     node.add(200)
     node.sort.should == [2, 200]
   end
-end
 
-describe Node do
   it "three-plus int sort" do
     node=Node.new (2)
     node.add(-200)
