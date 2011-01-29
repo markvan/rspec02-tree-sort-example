@@ -3,13 +3,29 @@ require_relative 'treesort'
 
 describe Node do
 
-  def create_and_check_node(val)
-    node = Node.new(val)
+  def check_newly_created_node(node, val)
+    node.class.should equal(Node)
     node.instance_variable_get(:@left).should == nil
     node.instance_variable_get(:@value).should == val
     node.instance_variable_get(:@right).should == nil
+  end
+
+  def create_and_check_node(val)
+    node = Node.new(val)
+    check_newly_created_node(node, val)
     node
   end
+
+  def check_smaller_addition(node, val)
+    sub_node = node.instance_variable_get(:@left)
+    check_newly_created_node(sub_node, val)
+  end
+
+  def check_equal_or_larger_addition(node, val)
+    sub_node = node.instance_variable_get(:@right)
+    check_newly_created_node(sub_node, val)
+  end
+
 
   it "create with one integer" do
     create_and_check_node (2)
@@ -17,31 +33,23 @@ describe Node do
     create_and_check_node (66)
   end
 
-  def check_left(node, val)
-    node_level_down_left = node.instance_variable_get(:@left)
-    node_level_down_left.class.should == Node
-
-    node_level_down_left.instance_variable_get(:@left).should == nil
-    node_level_down_left.instance_variable_get(:@value).should == val
-    node_level_down_left.instance_variable_get(:@right).should == nil
-  end
 
   it "add a smaller number" do
     node = create_and_check_node (2)
     node.add(-6)
-    check_left(node, -6)
+    check_smaller_addition(node, -6)
+  end
+
+  it "add an equal number" do
+    node = create_and_check_node (2)
+    node.add(2)
+    check_equal_or_larger_addition(node,2)
   end
 
   it "add a greater number" do
     node = create_and_check_node (2)
     node.add(100)
-
-    node_level_down_right = node.instance_variable_get(:@right)
-    node_level_down_right.class.should == Node
-
-    node_level_down_right.instance_variable_get(:@left).should == nil
-    node_level_down_right.instance_variable_get(:@value).should == 100
-    node_level_down_right.instance_variable_get(:@right).should == nil
+    check_equal_or_larger_addition(node,100)
   end
 end
 
