@@ -1,10 +1,11 @@
 # treesortspec.rb
 require_relative 'treesort'
+require_relative 'new_node_matcher'
 
 describe Node do
 
   def check_newly_created_node(node, val)
-    node.class.should equal(Node)
+    node.should be_newly_created_node_with_value(val)
     node.instance_variable_get(:@left).should == nil
     node.instance_variable_get(:@value).should == val
     node.instance_variable_get(:@right).should == nil
@@ -79,7 +80,7 @@ describe Node do
     node.add(-300)
     node.sort.should == [-300, -200, 2]
 
-   
+
     node.add(400)
     node.sort.should == [-300, -200, 2, 400]
 
