@@ -6,18 +6,18 @@ describe Node do
 
   def create_and_check_node(val)
     node = Node.new(val)
-    node.should be_leaf_node_with_value(val)
+    node.should be_leaf_node_with_value val
     node
   end
 
   def check_smaller_addition(node, val)
     sub_node = node.instance_variable_get(:@left)
-    sub_node.should be_leaf_node_with_value(val)
+    sub_node.should be_leaf_node_with_value val
   end
 
   def check_equal_or_larger_addition(node, val)
     sub_node = node.instance_variable_get(:@right)
-    sub_node.should be_leaf_node_with_value(val)
+    sub_node.should be_leaf_node_with_value val
   end
 
 
