@@ -2,39 +2,22 @@
 require_relative 'treesort'
 require_relative 'leaf_node_matcher'
 
-#RSpec.configure do |config|
-#  config.include(LeafNodeMatcher)
-#end
-
 describe Node do
-  #include LeafNodeMatcher
-
-  def check_newly_created_node(node, val)
-
-    #matcher =
-    node.should be_leaf_node_with_value(val)
-    #matcher.matches?(node)
-    
-
-    node.instance_variable_get(:@left).should == nil
-    node.instance_variable_get(:@value).should == val
-    node.instance_variable_get(:@right).should == nil
-  end
 
   def create_and_check_node(val)
     node = Node.new(val)
-    check_newly_created_node(node, val)
+    node.should be_leaf_node_with_value(val)
     node
   end
 
   def check_smaller_addition(node, val)
     sub_node = node.instance_variable_get(:@left)
-    check_newly_created_node(sub_node, val)
+    sub_node.should be_leaf_node_with_value(val)
   end
 
   def check_equal_or_larger_addition(node, val)
     sub_node = node.instance_variable_get(:@right)
-    check_newly_created_node(sub_node, val)
+    sub_node.should be_leaf_node_with_value(val)
   end
 
 

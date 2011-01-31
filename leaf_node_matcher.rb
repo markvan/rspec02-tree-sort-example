@@ -1,6 +1,6 @@
 #module LeafNodeMatcher
 
-  class NewNodeMatcher
+  class LeafNodeMatcher
     def initialize(val)
       @val = val
     end
@@ -19,6 +19,6 @@
   end
 
   def be_leaf_node_with_value(val)
-    NewNodeMatcher.new(val)
+    LeafNodeMatcher.new(val)
   end
 #end
