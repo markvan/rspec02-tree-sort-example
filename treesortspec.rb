@@ -1,6 +1,7 @@
 # treesortspec.rb
 require_relative 'treesort'
 require_relative 'leaf_node_matcher'
+require_relative 'smaller_addition_matcher'
 
 describe Node do
 
@@ -10,14 +11,16 @@ describe Node do
     node
   end
 
-  def check_smaller_addition(node, val)
+  def check_smaller_addition(node, sub_node_val)
     sub_node = node.instance_variable_get(:@left)
-    sub_node.should be_leaf_node_with_value val
+    node.instance_variable_get(:@right).should == nil
+    sub_node.should be_leaf_node_with_value sub_node_val
   end
 
-  def check_equal_or_larger_addition(node, val)
+  def check_equal_or_larger_addition(node, sub_node_val)
+    node.instance_variable_get(:@left).should == nil
     sub_node = node.instance_variable_get(:@right)
-    sub_node.should be_leaf_node_with_value val
+    sub_node.should be_leaf_node_with_value sub_node_val
   end
 
 
@@ -31,7 +34,8 @@ describe Node do
   it "add a smaller number" do
     node = create_and_check_node (2)
     node.add(-6)
-    check_smaller_addition(node, -6)
+    # check_smaller_addition(node, -6)
+    node.should handle_smaller_addition_of -6
   end
 
   it "add an equal number" do
