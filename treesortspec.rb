@@ -1,11 +1,21 @@
 # treesortspec.rb
 require_relative 'treesort'
-require_relative 'new_node_matcher'
+require_relative 'leaf_node_matcher'
+
+#RSpec.configure do |config|
+#  config.include(LeafNodeMatcher)
+#end
 
 describe Node do
+  #include LeafNodeMatcher
 
   def check_newly_created_node(node, val)
-    node.should be_newly_created_node_with_value(val)
+
+    #matcher =
+    node.should be_leaf_node_with_value(val)
+    #matcher.matches?(node)
+    
+
     node.instance_variable_get(:@left).should == nil
     node.instance_variable_get(:@value).should == val
     node.instance_variable_get(:@right).should == nil
