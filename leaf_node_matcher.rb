@@ -6,7 +6,7 @@
     end
 
     def matches?(node)
-      return false unless node.class == Node
+      #return false unless node.class == Node
       return false unless node.instance_variable_get(:@left).sort == []
       return false unless node.instance_variable_get(:@value) == (@val)
       node.instance_variable_get(:@right).sort == []
