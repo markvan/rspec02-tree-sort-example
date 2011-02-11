@@ -1,7 +1,7 @@
 # treesortspec.rb
-require_relative 'treesort'
-require_relative 'leaf_node_matcher'
-require_relative 'smaller_addition_matcher'
+require 'treesort'
+require 'leaf_node_matcher'
+require 'smaller_addition_matcher'
 
 describe Node do
 
@@ -18,7 +18,7 @@ describe Node do
   end
 
   def check_equal_or_larger_addition(node, sub_node_val)
-    node.instance_variable_get(:@left).should == nil
+    #node.instance_variable_get(:@left).should == nil
     sub_node = node.instance_variable_get(:@right)
     sub_node.should be_leaf_node_with_value sub_node_val
   end
@@ -32,20 +32,20 @@ describe Node do
 
 
   it "add a smaller number" do
-    node = create_and_check_node (2)
+    node = create_and_check_node(2)
     node.add(-6)
     # check_smaller_addition(node, -6)
     node.should handle_smaller_addition_of -6
   end
 
   it "add an equal number" do
-    node = create_and_check_node (2)
+    node = create_and_check_node(2)
     node.add(2)
     check_equal_or_larger_addition(node,2)
   end
 
   it "add a greater number" do
-    node = create_and_check_node (2)
+    node = create_and_check_node(2)
     node.add(100)
     check_equal_or_larger_addition(node,100)
   end
@@ -53,26 +53,26 @@ end
 
 describe Node do
   it "one int sort" do
-    node=Node.new (2)
+    node=Node.new(2)
     node.sort.should ==[2]
   end
 
   it "two int sort" do
-    node=Node.new (2)
+    node=Node.new(2)
     node.add(-200)
     node.sort.should == [-200, 2]
 
-    node=Node.new (2)
+    node=Node.new(2)
     node.add(2)
     node.sort.should == [2, 2]
 
-    node=Node.new (2)
+    node=Node.new(2)
     node.add(200)
     node.sort.should == [2, 200]
   end
 
   it "three-plus int sort" do
-    node=Node.new (2)
+    node=Node.new(2)
     node.add(-200)
     node.add(-300)
     node.sort.should == [-300, -200, 2]

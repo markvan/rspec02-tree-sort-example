@@ -7,9 +7,9 @@
 
     def matches?(node)
       return false unless node.class == Node
-      return false unless node.instance_variable_get(:@left) == nil
+      return false unless node.instance_variable_get(:@left).sort == []
       return false unless node.instance_variable_get(:@value) == (@val)
-      node.instance_variable_get(:@right) == nil
+      node.instance_variable_get(:@right).sort == []
     end
     def failure_message_for_should
       "unexpected value mismatch or non-nil left or right"

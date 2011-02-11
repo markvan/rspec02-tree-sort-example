@@ -5,7 +5,7 @@ class SmallerAdditionMatcher
 
     def matches?(node)
       sub_node = node.instance_variable_get(:@left)
-      return false unless node.instance_variable_get(:@right) == nil
+      return false unless node.instance_variable_get(:@right).sort == []
       LeafNodeMatcher.new(@sub_node_val).matches?(sub_node)
     end
 

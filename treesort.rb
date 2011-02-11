@@ -1,10 +1,16 @@
 # treesort.rb
 
+class NoNode
+  def sort
+    []
+  end
+end
+
 class Node
 
   def initialize(i)
     @value = i
-    @left, @right = nil, nil
+    @left, @right = NoNode.new, NoNode.new
   end
 
   def add(i)
@@ -16,15 +22,9 @@ class Node
   end
 
   def sort
-    if @left.is_a? Node
-      result = @left.sort
-    else
-      result = []
-    end
+    result = @left.sort
     result.concat([@value])
-    if @right.is_a? Node
-      result.concat(@right.sort)
-    end
+    result.concat(@right.sort)
     result
   end
 
